@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google OAuth Login</title>
+</head>
+<body>
+<h1>Login with Google</h1>
+<a id="google-signup-button" href="http://localhost:8090/oauth2/authorization/google">
+    <button>Google 간편 로그인</button>
+</a>
+
+<h2>일반 로그인</h2>
+<form id="signup-form" action="http://localhost:8090/login" method="POST">
+    <label for="username">Id:</label><br>
+    <input type="text" id="username" name="username" required><br><br>
+
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <button type="submit">로그인</button>
+</form>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const state = urlParams.get('state');
+
+    if (state === 'success') {
+        alert('회원가입 완료!');
+    } else if (state === 'error') {
+        alert('로그인 실패했습니다. 다시 시도해주세요.');
+    }
+</script>
+</body>
+</html>
